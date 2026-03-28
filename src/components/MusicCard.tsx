@@ -18,7 +18,7 @@ declare global {
   }
 }
 
-export default function MusicCard({ 
+export default function MusicCard({
   videoId = "P4UnrmPFPA4",
   coverUrl = "https://i.scdn.co/image/ab67616d0000b273db74fef7756d57f0cdd9b167"
 }: MusicCardProps) {
@@ -55,7 +55,7 @@ export default function MusicCard({
 
     const initPlayer = () => {
       if (playerInstance || !window.YT?.Player) return;
-      
+
       try {
         playerInstance = new window.YT.Player('yt-player-iframe', {
           events: {
@@ -98,7 +98,7 @@ export default function MusicCard({
   const togglePlay = () => {
     const player = playerRef.current;
     if (!player || !isReady || typeof player.playVideo !== 'function') return;
-    
+
     try {
       if (isPlaying) {
         player.pauseVideo();
@@ -112,7 +112,7 @@ export default function MusicCard({
 
   return (
     <div className="mx-auto w-full max-w-2xl px-4 md:px-0">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         className="group relative flex items-center gap-2 md:gap-3 bg-[#121212] border border-white/5 p-1.5 md:p-2 rounded-[1.5rem] shadow-xl hover:bg-[#181818] transition-all duration-300 pointer-events-auto"
@@ -131,7 +131,7 @@ export default function MusicCard({
             {/* Playing Animation Overlay */}
             <AnimatePresence>
               {isPlaying && (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -141,9 +141,9 @@ export default function MusicCard({
                     <motion.div
                       key={i}
                       animate={{ height: ["20%", "60%", "20%"] }}
-                      transition={{ 
-                        duration: 0.6, 
-                        repeat: Infinity, 
+                      transition={{
+                        duration: 0.6,
+                        repeat: Infinity,
                         delay: i * 0.2,
                         ease: "easeInOut"
                       }}
@@ -158,11 +158,11 @@ export default function MusicCard({
           {/* Info */}
           <div className="flex-1 min-w-0 py-0.5">
             <div className="flex items-center gap-1.5 mb-0.5">
-              <Image 
-                src="/assets/spotify.svg" 
-                alt="Spotify" 
-                width={12} 
-                height={12} 
+              <Image
+                src="/assets/spotify.svg"
+                alt="Spotify"
+                width={12}
+                height={12}
                 className={isPlaying ? "animate-spin [animation-duration:3s]" : ""}
               />
               <p className="text-[9px] md:text-[10px] font-medium text-gray-400 capitalize">
@@ -182,11 +182,10 @@ export default function MusicCard({
             <button
               onClick={togglePlay}
               disabled={!isReady}
-              className={`flex h-8 w-8 md:h-9 md:w-9 items-center justify-center rounded-full transition-all duration-200 ${
-                isPlaying 
-                ? "bg-green-500 text-black hover:scale-105" 
+              className={`flex h-8 w-8 md:h-9 md:w-9 items-center justify-center rounded-full transition-all duration-200 ${isPlaying
+                ? "bg-green-500 text-black hover:scale-105"
                 : "bg-[#282828] text-white hover:bg-[#3e3e3e] hover:scale-105 active:scale-95"
-              } disabled:opacity-50 disabled:cursor-not-allowed`}
+                } disabled:opacity-50 disabled:cursor-not-allowed`}
               aria-label={isPlaying ? "Pause music" : "Play music"}
             >
               {isPlaying ? (
@@ -204,7 +203,7 @@ export default function MusicCard({
             id="yt-player-iframe"
             width="640"
             height="360"
-            src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1&autoplay=0&controls=0&rel=0&start=56`}
+            src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1&autoplay=0&controls=0&rel=0&start=50`}
             frameBorder="0"
             allow="autoplay"
           ></iframe>
