@@ -20,7 +20,7 @@ declare global {
 
 export default function MusicCard({
   videoId = "P4UnrmPFPA4",
-  coverUrl = "https://i.scdn.co/image/ab67616d0000b273db74fef7756d57f0cdd9b167"
+  coverUrl = "/Cover.png"
 }: MusicCardProps) {
   const [title, setTitle] = useState("Loading...");
   const [artist, setArtist] = useState("Loading...");
@@ -111,15 +111,15 @@ export default function MusicCard({
   };
 
   return (
-    <div className="mx-auto w-full max-w-2xl px-4 md:px-0">
+    <div className="mx-auto w-full max-w-2xl">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="group relative flex items-center gap-2 md:gap-3 bg-[#121212] border border-white/5 p-1.5 md:p-2 rounded-[1.5rem] shadow-xl hover:bg-[#181818] transition-all duration-300 pointer-events-auto"
+        className="group relative flex items-center gap-2 md:gap-3 bg-neutral-100/80 dark:bg-[#121212] border border-black/5 dark:border-white/5 p-1.5 md:p-2 rounded-xl shadow-xl hover:bg-neutral-200/80 dark:hover:bg-[#181818] transition-all duration-300 pointer-events-auto"
       >
         <div className="relative z-10 flex w-full items-center gap-2 md:gap-3">
           {/* Cover Art */}
-          <div className="relative h-12 w-12 md:h-14 md:w-14 overflow-hidden rounded-xl shadow-lg shrink-0">
+          <div className="relative h-12 w-12 md:h-14 md:w-14 overflow-hidden rounded-xl shadow-lg shrink-0 border border-black/5 dark:border-white/10">
             <Image
               src={coverUrl}
               alt="Song Cover"
@@ -165,14 +165,14 @@ export default function MusicCard({
                 height={12}
                 className={isPlaying ? "animate-spin [animation-duration:3s]" : ""}
               />
-              <p className="text-[9px] md:text-[10px] font-medium text-gray-400 capitalize">
+              <p className="text-[9px] md:text-[10px] font-medium text-neutral-500 dark:text-gray-400 capitalize">
                 {isPlaying ? "listening to" : "last played"}
               </p>
             </div>
-            <h3 className="text-[12px] md:text-sm font-bold truncate text-white leading-tight">
+            <h3 className="text-[12px] md:text-sm font-bold line-clamp-2 text-neutral-900 dark:text-white leading-tight">
               {title}
             </h3>
-            <p className="text-[10px] md:text-xs text-gray-400 truncate font-normal">
+            <p className="text-[10px] md:text-xs text-neutral-500 dark:text-gray-400 truncate font-normal">
               by {artist}
             </p>
           </div>
@@ -183,8 +183,8 @@ export default function MusicCard({
               onClick={togglePlay}
               disabled={!isReady}
               className={`flex h-8 w-8 md:h-9 md:w-9 items-center justify-center rounded-full transition-all duration-200 ${isPlaying
-                ? "bg-green-500 text-black hover:scale-105"
-                : "bg-[#282828] text-white hover:bg-[#3e3e3e] hover:scale-105 active:scale-95"
+                  ? "bg-green-500 text-black hover:scale-105"
+                  : "bg-neutral-200 dark:bg-[#282828] text-neutral-900 dark:text-white hover:bg-neutral-300 dark:hover:bg-[#3e3e3e] hover:scale-105 active:scale-95"
                 } disabled:opacity-50 disabled:cursor-not-allowed`}
               aria-label={isPlaying ? "Pause music" : "Play music"}
             >

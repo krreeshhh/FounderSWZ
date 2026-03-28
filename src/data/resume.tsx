@@ -8,7 +8,7 @@ export const DATA = {
   location: "Kovalam, Chennai",
   locationLink: "https://www.google.com/maps/place/kovalam",
   description:
-    "Cybersecurity Engineer → Entrepreneur. I build secure tech, create learning platforms, and help people grow in cybersecurity. Founder of Secure Worldz",
+    "Founder & CEO SecureWorldz |Cybersecurity Educator | Security Strategist  | Busy Building dragotool.shop",
   summary:
     "I’m a technology enthusiast with a strong interest in cybersecurity, driven by curiosity about how systems work and how they can be protected from real-world threats. Over time, I’ve explored multiple domains ranging from software development and networking to offensive and defensive security, which gave me practical exposure to the industry. As the Founder & CEO of [Secure Worldz](https://secureworldz.vercel.app), whether it’s building secure solutions, guiding others, or consulting on security and technology, I’m always focused on creating something impactful.",
   avatarUrl: "/main.jpeg",
@@ -227,7 +227,40 @@ export const DATA = {
         },
       ],
       image: "/kovalam.png",
-    }
+    },
+    {
+      title: "CTF Page",
+      href: "/",
+      dates: "Jan 2024 - Feb 2024",
+      active: true,
+      description:
+        "This is a custom-built CTF platform I developed to help students practice real world cybersecurity challenges in a structured and interactive environment.",
+      links: [
+        {
+          type: "Website",
+          href: "/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/ctf.png",
+      tags: ["CTF", "Cybersecurity", "Education"],
+    }, {
+      title: "ProWorldz lab",
+      href: "/",
+      dates: "Jan 2024 - Feb 2024",
+      active: true,
+      description:
+        "This is an interactive lab system I developed to transform theoretical cybersecurity concepts into practical, task driven learning.",
+      links: [
+        {
+          type: "Website",
+          href: "/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/Lab.png",
+      tags: ["Lab", "Education", "Security"],
+    },
   ],
   hackathons: [
     {

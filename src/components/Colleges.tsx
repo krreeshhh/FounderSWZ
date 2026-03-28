@@ -21,9 +21,17 @@ export default function HallOfFame() {
             <div className="relative w-full py-2">
               <InfiniteSlider speed={25} gap={20}>
                 {[
-                  { src: "/colleges/Amit.png", alt: "Amit Logo" },
+                  {
+                    src: "/colleges/Amit-Light.png",
+                    darkSrc: "/colleges/Amit.png",
+                    alt: "Amit Logo"
+                  },
                   { src: "/colleges/Peri.png", alt: "Peri Logo" },
-                  { src: "/colleges/Prince.png", alt: "Prince Logo" },
+                  {
+                    src: "/colleges/Prince-Light.png",
+                    darkSrc: "/colleges/Prince.png",
+                    alt: "Prince Logo"
+                  },
                   {
                     src: "/colleges/Sathak.png",
                     darkSrc: "/colleges/Sathak-dark.png",
@@ -62,9 +70,17 @@ export default function HallOfFame() {
                 ))}
                 {/* duplicate set to ensure seamless tiling */}
                 {[
-                  { src: "/colleges/Amit.png", alt: "Amit Logo" },
+                  {
+                    src: "/colleges/Amit-Light.png",
+                    darkSrc: "/colleges/Amit.png",
+                    alt: "Amit Logo"
+                  },
                   { src: "/colleges/Peri.png", alt: "Peri Logo" },
-                  { src: "/colleges/Prince.png", alt: "Prince Logo" },
+                  {
+                    src: "/colleges/Prince-Light.png",
+                    darkSrc: "/colleges/Prince.png",
+                    alt: "Prince Logo"
+                  },
                   {
                     src: "/colleges/Sathak.png",
                     darkSrc: "/colleges/Sathak-dark.png",

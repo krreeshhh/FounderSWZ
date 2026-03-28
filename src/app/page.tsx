@@ -18,23 +18,26 @@ export default function Page() {
     <main className="flex flex-col min-h-[100dvh] space-y-8">
       <section id="hero">
         <div className="mx-auto w-full max-w-2xl space-y-8">
-          <div className="gap-2 flex justify-between">
-            <div className="flex-col flex flex-1 space-y-1.5">
+          <div className="flex flex-col-reverse md:flex-row gap-4 justify-between items-center md:items-start text-center md:text-left">
+            <div className="flex-col flex items-center md:items-start flex-1 space-y-1.5">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
                 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
                 yOffset={8}
                 text={`Hi, I'm ${DATA.name.split(" ")[0]}`}
               />
-              <BlurFadeText
-                className="pt-1 pb-4 max-w-[600px] md:text-xl"
-                delay={BLUR_FADE_DELAY}
-                text={DATA.description}
-              />
+              {/*Bio Section */}
+              <BlurFade delay={BLUR_FADE_DELAY}>
+                <div className="flex flex-col">
+                  <p className="pt-1 pb-4 max-w-[600px] text-sm md:text-xl text-muted-foreground leading-relaxed">
+                    Founder & CEO SecureWorldz | Cybersecurity Educator | Security Strategist | Busy Building <a href="https://dragotool.shop" className="text-blue-500 hover:underline">dragotool.shop</a>
+                  </p>
+                </div>
+              </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="size-28 border">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
+              <Avatar className="size-28 md:size-32 border-2 border-primary/10 shadow-xl">
+                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} className="object-cover" />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
             </BlurFade>
