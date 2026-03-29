@@ -57,20 +57,7 @@ export default function MusicCard({
       if (playerInstance || !window.YT?.Player) return;
 
       try {
-        const origin = typeof window !== 'undefined' ? window.location.origin : '';
         playerInstance = new window.YT.Player('yt-player-iframe', {
-          videoId: videoId,
-          host: 'https://www.youtube.com',
-          playerVars: {
-            'playsinline': 1,
-            'origin': origin,
-            'enablejsapi': 1,
-            'autoplay': 0,
-            'controls': 0,
-            'rel': 0,
-            'modestbranding': 1,
-            'start': 50
-          },
           events: {
             'onReady': () => {
               setIsReady(true);
@@ -97,7 +84,7 @@ export default function MusicCard({
         initPlayer();
         clearInterval(checkInterval);
       }
-    }, 200);
+    }, 500);
 
     return () => {
       clearInterval(checkInterval);
@@ -110,12 +97,14 @@ export default function MusicCard({
 
   const togglePlay = () => {
     const player = playerRef.current;
-    if (!player || !isReady || typeof player.playVideo !== 'function') return;
+    if (!player || !isReady) return;
 
     try {
       if (isPlaying) {
         player.pauseVideo();
       } else {
+        // Many mobile browsers require unmuting after a user gesture if they blocked initial sound
+        if (typeof player.unMute === 'function') player.unMute();
         player.playVideo();
       }
     } catch (err) {
@@ -211,8 +200,18 @@ export default function MusicCard({
         </div>
 
         {/* Hidden YT Player */}
-        <div className="absolute w-1 h-1 overflow-hidden pointer-events-none opacity-0" aria-hidden="true">
-          <div id="yt-player-iframe" />
+        <div 
+          className="absolute left-0 bottom-0 pointer-events-none opacity-[0.001] w-10 h-10 overflow-hidden" 
+          aria-hidden="true"
+        >
+          <iframe
+            id="yt-player-iframe"
+            width="640"
+            height="360"
+            src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1&autoplay=0&controls=0&rel=0&playsinline=1&modestbranding=1&start=50&origin=${typeof window !== 'undefined' ? window.location.origin : ''}`}
+            frameBorder="0"
+            allow="autoplay; encrypted-media"
+          ></iframe>
         </div>
       </motion.div>
     </div>
