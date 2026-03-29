@@ -242,7 +242,7 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "/ctf.png",
+      image: "/CTF.png",
       tags: ["CTF", "Cybersecurity", "Education"],
     }, {
       title: "ProWorldz lab",
