@@ -57,7 +57,20 @@ export default function MusicCard({
       if (playerInstance || !window.YT?.Player) return;
 
       try {
+        const origin = typeof window !== 'undefined' ? window.location.origin : '';
         playerInstance = new window.YT.Player('yt-player-iframe', {
+          videoId: videoId,
+          host: 'https://www.youtube.com',
+          playerVars: {
+            'playsinline': 1,
+            'origin': origin,
+            'enablejsapi': 1,
+            'autoplay': 0,
+            'controls': 0,
+            'rel': 0,
+            'modestbranding': 1,
+            'start': 50
+          },
           events: {
             'onReady': () => {
               setIsReady(true);
@@ -198,15 +211,8 @@ export default function MusicCard({
         </div>
 
         {/* Hidden YT Player */}
-        <div className="absolute w-0 h-0 overflow-hidden pointer-events-none opacity-0" aria-hidden="true">
-          <iframe
-            id="yt-player-iframe"
-            width="640"
-            height="360"
-            src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1&autoplay=0&controls=0&rel=0&start=50`}
-            frameBorder="0"
-            allow="autoplay"
-          ></iframe>
+        <div className="absolute w-1 h-1 overflow-hidden pointer-events-none opacity-0" aria-hidden="true">
+          <div id="yt-player-iframe" />
         </div>
       </motion.div>
     </div>
